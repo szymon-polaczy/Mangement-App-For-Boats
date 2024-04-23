@@ -29,7 +29,7 @@
     </aside>
 
     <main class="flex items-center">
-        <form class="h-96 flex item-center gap-4 box-shadow-md shadow-stone-200 rounded-xl flex-col justify-center w-80">
+        <form method="POST" action="{{ route('login') }}" class="h-96 flex item-center gap-4 box-shadow-md shadow-stone-200 rounded-xl flex-col justify-center w-80">
             @csrf
 
             <h1 class="text-2xl text-center">Welcome</h1>
@@ -38,6 +38,16 @@
             <input type="password" name="password" class="w-60 mx-auto px-2 py-1 rounded-md" />
 
             <button class="bg-stone-600 w-60 mx-auto px-4 py-1 rounded-md">Log in</button>
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
         </form>
     </main>
 </body>
