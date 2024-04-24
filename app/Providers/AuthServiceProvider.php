@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
+        \Jurager\Teams\Models\Team::class => \App\Policies\TeamPolicy::class,
     ];
 
     /**

@@ -29,6 +29,6 @@ class LoginController extends Controller
     public function logout(Request $request): RedirectResponse
     {
         $request->session()->invalidate();
-        return redirect()->intended('welcome');
+        return redirect()->intended('/');
     }
 }
