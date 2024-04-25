@@ -12,9 +12,8 @@
 
 <body class="flex justify-center gap-20 h-screen w-screen bg-stone-800 text-teal-400">
     <main class="flex items-center flex-col justify-center gap-4">
-        <h1 class="text-2xl text-center">Dashboard</h1>
-        <a href="{{ route('create-new-team-with-owner-form') }}" class="bg-stone-600 w-60 text-center mx-auto px-4 py-1 rounded-md">Create new team with owner</a>
-        <a href="{{ route('logout') }}" class="bg-stone-600 w-60 text-center mx-auto px-4 py-1 rounded-md">Log out</a>
+        <h1 class="text-2xl text-center">TEAM</h1>
+        <p>{{ $team->name }}</p>
     </main>
 </body>
 

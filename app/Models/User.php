@@ -9,7 +9,7 @@ use Jurager\Teams\Traits\HasTeams;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory;
+    use HasApiTokens, HasFactory, HasTeams;
 
     /**
      * The attributes that are mass assignable.
