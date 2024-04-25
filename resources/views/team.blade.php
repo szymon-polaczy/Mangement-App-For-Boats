@@ -14,6 +14,11 @@
     <main class="flex items-center flex-col justify-center gap-4">
         <h1 class="text-2xl text-center">TEAM</h1>
         <p>{{ $team->name }}</p>
+
+
+        @foreach ($users as $user)
+        <option value="{{ $user->id }}">{{ $user->name }}</option>
+        @endforeach
     </main>
 </body>
 

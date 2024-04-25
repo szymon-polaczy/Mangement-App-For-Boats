@@ -32,8 +32,9 @@ Route::post('create-new-team-with-owner', [\App\Http\Controllers\TeamController:
 
 Route::get('/team/{id}', function ($id) {
     $team = Team::where('id', $id)->first();
+    $users = $team->allUsers();
 
-    return view('team')->with('team', $team);
+    return view('team')->with(['team' => $team, 'users' => $users]);
 })->middleware('auth')->name('team');
 
 Route::post('login', [\App\Http\Controllers\LoginController::class, 'login'])->name('login');
