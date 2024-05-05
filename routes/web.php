@@ -16,11 +16,25 @@ use Jurager\Teams\Models\Team;
 */
 
 Route::get('/', function () {
+    if (auth()->check()) {
+        return redirect()->route('dashboard');
+    }
+
     return view('welcome');
 })->name('welcome');
 
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy-policy');
+
+Route::get('/account-settings', function () {
+    return view('account-settings');
+})->name('account-settings')->middleware('auth');
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $teams = Team::all();
+
+    return view('dashboard')->with(['teams' => $teams]);
 })->middleware('auth')->name('dashboard');
 
 Route::get('create-new-team-with-owner', function () {
@@ -38,4 +52,4 @@ Route::get('/team/{id}', function ($id) {
 })->middleware('auth')->name('team');
 
 Route::post('login', [\App\Http\Controllers\LoginController::class, 'login'])->name('login');
-Route::get('logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+Route::get('logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout')->middleware('auth');
